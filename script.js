@@ -11,7 +11,12 @@ const datasets = {
     },
 
     30: {
-        labels: ["WEEK 1", "WEEK 2", "WEEK 3", "WEEK 4"],
+        labels: [
+            "WEEK 1",
+            "WEEK 2",
+            "WEEK 3",
+            "WEEK 4"
+        ],
         values: [52.4, 61.8, 68.2, 78.4],
         distance: "261.8",
         training: "18.6",
@@ -20,7 +25,11 @@ const datasets = {
     },
 
     90: {
-        labels: ["AUG", "SEP", "OCT"],
+        labels: [
+            "AUG",
+            "SEP",
+            "OCT"
+        ],
         values: [198.4, 224.7, 261.8],
         distance: "684.9",
         training: "52.4",
@@ -32,6 +41,10 @@ const datasets = {
 
 let performanceChart;
 
+
+/* ================================
+   CHART
+================================ */
 
 function createChart(period = 7) {
 
@@ -46,11 +59,9 @@ function createChart(period = 7) {
         type: "line",
 
         data: {
-
             labels: data.labels,
 
             datasets: [
-
                 {
                     label: "Distance",
 
@@ -74,10 +85,8 @@ function createChart(period = 7) {
 
                     tension: 0.35
                 }
-
             ]
         },
-
 
         options: {
 
@@ -90,13 +99,11 @@ function createChart(period = 7) {
                 mode: "index"
             },
 
-
             plugins: {
 
                 legend: {
                     display: false
                 },
-
 
                 tooltip: {
 
@@ -114,21 +121,16 @@ function createChart(period = 7) {
 
                     displayColors: false,
 
-
                     callbacks: {
 
                         label: function(context) {
-
                             return `${context.parsed.y} km`;
-
                         }
 
                     }
 
                 }
-
             },
-
 
             scales: {
 
@@ -139,23 +141,18 @@ function createChart(period = 7) {
                     },
 
                     ticks: {
-
                         color: "#626866",
-
                         font: {
                             family: "Inter",
                             size: 8,
                             weight: "700"
                         }
-
                     },
 
                     border: {
                         display: false
                     }
-
                 },
-
 
                 y: {
 
@@ -166,7 +163,6 @@ function createChart(period = 7) {
                     },
 
                     ticks: {
-
                         color: "#626866",
 
                         font: {
@@ -177,52 +173,51 @@ function createChart(period = 7) {
                         callback: function(value) {
                             return value + " km";
                         }
-
                     },
 
                     border: {
                         display: false
                     }
-
                 }
-
             },
 
-
             animation: {
-
                 duration: 900,
-
                 easing: "easeOutQuart"
-
             }
-
         }
-
     });
-
 }
 
 
+/* ================================
+   UPDATE KPI
+================================ */
 
 function updateStats(period) {
 
     const data = datasets[period];
 
-    document.getElementById("distance").textContent = data.distance;
+    document.getElementById("distance").textContent =
+        data.distance;
 
-    document.getElementById("training").textContent = data.training;
+    document.getElementById("training").textContent =
+        data.training;
 
-    document.getElementById("recovery").textContent = data.recovery;
+    document.getElementById("recovery").textContent =
+        data.recovery;
 
-    document.getElementById("sessions").textContent = data.sessions;
-
+    document.getElementById("sessions").textContent =
+        data.sessions;
 }
 
 
+/* ================================
+   PERIOD SWITCH
+================================ */
 
-const periodButtons = document.querySelectorAll(".period");
-
+const periodButtons =
+    document.querySelectorAll(".period");
 
 periodButtons.forEach(button => {
 
@@ -239,42 +234,51 @@ periodButtons.forEach(button => {
         updateStats(period);
 
         createChart(period);
-
     });
 
 });
 
 
+/* ================================
+   INITIAL LOAD
+================================ */
 
-/* SIDEBAR NAVIGATION */
+createChart(7);
 
-document.querySelectorAll(".nav-item").forEach(item => {
+
+/* ================================
+   NAVIGATION
+================================ */
+
+const navItems = document.querySelectorAll(".nav-item");
+
+const navigationTargets = [
+    null,
+    document.querySelector(".activity-panel"),
+    document.querySelector(".recovery-panel"),
+    document.querySelector(".insight")
+];
+
+
+navItems.forEach((item, index) => {
 
     item.addEventListener("click", event => {
 
         event.preventDefault();
 
 
-        /* Remove active state from all navigation items */
+        /* Update active navigation item */
 
-        document.querySelectorAll(".nav-item").forEach(nav => {
+        navItems.forEach(nav => {
             nav.classList.remove("active");
         });
-
-
-        /* Set clicked item as active */
 
         item.classList.add("active");
 
 
-        /* Find target section */
+        /* OVERVIEW */
 
-        const target = item.dataset.target;
-
-
-        /* Overview returns to the top */
-
-        if (target === "overview") {
+        if (index === 0) {
 
             window.scrollTo({
                 top: 0,
@@ -285,16 +289,22 @@ document.querySelectorAll(".nav-item").forEach(item => {
         }
 
 
-        /* Scroll to selected section */
+        /* ACTIVITY / RECOVERY / INSIGHTS */
 
-        const section = document.getElementById(target);
+        const target = navigationTargets[index];
 
+        if (target) {
 
-        if (section) {
+            const offset = 30;
 
-            section.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
+            const targetPosition =
+                target.getBoundingClientRect().top +
+                window.scrollY -
+                offset;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth"
             });
 
         }
@@ -302,9 +312,3 @@ document.querySelectorAll(".nav-item").forEach(item => {
     });
 
 });
-
-
-
-/* INITIAL CHART */
-
-createChart(7);
