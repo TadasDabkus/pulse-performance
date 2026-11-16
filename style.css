@@ -732,3 +732,25 @@ a {
         padding: 9px 13px;
     }
 }
+
+/* ================================
+   NAVIGATION POLISH
+================================ */
+
+.dashboard-section-highlight {
+    animation: sectionHighlight 0.8s ease;
+}
+
+@keyframes sectionHighlight {
+    0% {
+        box-shadow: 0 0 0 0 rgba(200, 255, 0, 0);
+    }
+
+    35% {
+        box-shadow: 0 0 0 1px rgba(200, 255, 0, 0.45);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(200, 255, 0, 0);
+    }
+}
