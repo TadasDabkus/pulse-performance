@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PULSE — Recovery</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <span class="brand-mark">+</span>
+            <span>PULSE</span>
+        </div>
+
+
+        <nav class="navigation">
+
+            <a href="index.html" class="nav-item">
+                <span>01</span>
+                Overview
+            </a>
+
+            <a href="activity.html" class="nav-item">
+                <span>02</span>
+                Activity
+            </a>
+
+            <a href="recovery.html" class="nav-item active">
+                <span>03</span>
+                Recovery
+            </a>
+
+            <a href="insights.html" class="nav-item">
+                <span>04</span>
+                Insights
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="status">
+                <span class="status-dot"></span>
+                SYSTEM ONLINE
+            </div>
+
+
+            <div class="user">
+
+                <div class="avatar">
+                    TD
+                </div>
+
+                <div>
+                    <strong>Tadzaki</strong>
+                    <span>Performance</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="eyebrow">
+                    PERFORMANCE / RECOVERY
+                </p>
+
+                <h1>
+                    Your
+                    <em>recovery.</em>
+                </h1>
+
+            </div>
+
+
+            <div class="date">
+
+                <span>MONDAY</span>
+
+                <strong>
+                    16 NOV 2026
+                </strong>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- RECOVERY OVERVIEW -->
+
+        <section class="stats">
+
+            <article class="stat-card">
+
+                <span class="stat-label">
+                    READINESS
+                </span>
+
+                <strong id="readiness">
+                    87
+                </strong>
+
+                <span class="stat-unit">
+                    %
+                </span>
+
+                <span class="stat-change positive">
+                    +4.2%
+                </span>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <span class="stat-label">
+                    SLEEP
+                </span>
+
+                <strong id="sleep">
+                    8:12
+                </strong>
+
+                <span class="stat-unit">
+                    HRS
+                </span>
+
+                <span class="stat-change positive">
+                    +18 MIN
+                </span>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <span class="stat-label">
+                    HRV
+                </span>
+
+                <strong id="hrv">
+                    72
+                </strong>
+
+                <span class="stat-unit">
+                    MS
+                </span>
+
+                <span class="stat-change positive">
+                    +6.1%
+                </span>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <span class="stat-label">
+                    RESTING HR
+                </span>
+
+                <strong id="restingHR">
+                    51
+                </strong>
+
+                <span class="stat-unit">
+                    BPM
+                </span>
+
+                <span class="stat-change positive">
+                    -3 BPM
+                </span>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- RECOVERY CHART -->
+
+        <section class="panel performance-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="section-number">
+                        01 / READINESS
+                    </span>
+
+                    <h2>
+                        Recovery trend
+                    </h2>
+
+                </div>
+
+
+                <div class="chart-legend">
+
+                    <span>
+                        <i></i>
+                        READINESS
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-container">
+
+                <canvas id="recoveryChart"></canvas>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- RECOVERY DETAILS -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- SLEEP -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="section-number">
+                            02 / SLEEP
+                        </span>
+
+                        <h2>
+                            Sleep quality
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="recovery-metrics">
+
+                    <div>
+
+                        <span>
+                            DURATION
+                        </span>
+
+                        <strong>
+                            8h 12m
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            QUALITY
+                        </span>
+
+                        <strong>
+                            91%
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            CONSISTENCY
+                        </span>
+
+                        <strong>
+                            88%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RECOVERY STATUS -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="section-number">
+                            03 / STATUS
+                        </span>
+
+                        <h2>
+                            Recovery status
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="insight">
+
+                    <div class="insight-mark">
+                        +
+                    </div>
+
+
+                    <div>
+
+                        <span class="section-number">
+                            SYSTEM ANALYSIS
+                        </span>
+
+                        <h2>
+                            Recovery is
+                            <em>strong.</em>
+                        </h2>
+
+                        <p>
+                            Current recovery indicators suggest
+                            you are ready for normal training intensity.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <span>
+                PULSE / RECOVERY ANALYTICS
+            </span>
+
+            <span>
+                SYSTEM v1.0
+            </span>
+
+            <span>
+                © 2026
+            </span>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+<script src="data.js"></script>
+<script src="recovery.js"></script>
+
+</body>
+
+</html>
