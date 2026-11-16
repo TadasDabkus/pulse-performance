@@ -253,12 +253,52 @@ createChart(7);
 const navItems = document.querySelectorAll(".nav-item");
 
 const navigationTargets = [
-    null,
+    document.querySelector(".main"),
     document.querySelector(".activity-panel"),
     document.querySelector(".recovery-panel"),
     document.querySelector(".insight")
 ];
 
+
+/* ================================
+   SCROLL TO SECTION
+================================ */
+
+function scrollToSection(target) {
+
+    if (!target) return;
+
+    const offset = 30;
+
+    const targetPosition =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        offset;
+
+    window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth"
+    });
+
+
+    /* Highlight destination */
+
+    target.classList.remove("dashboard-section-highlight");
+
+    void target.offsetWidth;
+
+    target.classList.add("dashboard-section-highlight");
+
+
+    setTimeout(() => {
+        target.classList.remove("dashboard-section-highlight");
+    }, 800);
+}
+
+
+/* ================================
+   NAV CLICK
+================================ */
 
 navItems.forEach((item, index) => {
 
@@ -267,8 +307,6 @@ navItems.forEach((item, index) => {
         event.preventDefault();
 
 
-        /* Update active navigation item */
-
         navItems.forEach(nav => {
             nav.classList.remove("active");
         });
@@ -276,39 +314,95 @@ navItems.forEach((item, index) => {
         item.classList.add("active");
 
 
-        /* OVERVIEW */
-
-        if (index === 0) {
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-            return;
-        }
-
-
-        /* ACTIVITY / RECOVERY / INSIGHTS */
-
         const target = navigationTargets[index];
 
-        if (target) {
-
-            const offset = 30;
-
-            const targetPosition =
-                target.getBoundingClientRect().top +
-                window.scrollY -
-                offset;
-
-            window.scrollTo({
-                top: targetPosition,
-                behavior: "smooth"
-            });
-
-        }
+        scrollToSection(target);
 
     });
+
+});
+
+
+/* ================================
+   ACTIVE SECTION ON SCROLL
+================================ */
+
+const sectionObservers = [
+    {
+        element: document.querySelector(".activity-panel"),
+        navIndex: 1
+    },
+
+    {
+        element: document.querySelector(".recovery-panel"),
+        navIndex: 2
+    },
+
+    {
+        element: document.querySelector(".insight"),
+        navIndex: 3
+    }
+];
+
+
+const observer = new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                const navIndex =
+                    sectionObservers.find(
+                        section =>
+                            section.element === entry.target
+                    )?.navIndex;
+
+                if (navIndex !== undefined) {
+
+                    navItems.forEach(nav => {
+                        nav.classList.remove("active");
+                    });
+
+                    navItems[navIndex].classList.add("active");
+
+                }
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold: 0.35
+    }
+);
+
+
+sectionObservers.forEach(section => {
+
+    if (section.element) {
+        observer.observe(section.element);
+    }
+
+});
+
+
+/* ================================
+   OVERVIEW ACTIVE STATE
+================================ */
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY < 150) {
+
+        navItems.forEach(nav => {
+            nav.classList.remove("active");
+        });
+
+        navItems[0].classList.add("active");
+
+    }
 
 });
