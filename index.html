@@ -4,67 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PULSE — Performance Dashboard</title>
+    <title>PULSE — Performance Analytics</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet"
     >
 
-    <link rel="stylesheet" href="style.css">
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="dashboard">
+<div class="app">
 
     <!-- SIDEBAR -->
+
     <aside class="sidebar">
 
         <div class="brand">
-            PULSE
+            <span class="brand-mark">+</span>
+            <span>PULSE</span>
         </div>
 
         <nav class="navigation">
 
-            <a href="#" class="nav-item active" data-target="overview">
-                <span class="nav-number">01</span>
-                <span>OVERVIEW</span>
+            <a href="#" class="nav-item active">
+                <span>01</span>
+                Overview
             </a>
 
-            <a href="#" class="nav-item" data-target="activity">
-                <span class="nav-number">02</span>
-                <span>ACTIVITY</span>
+            <a href="#" class="nav-item">
+                <span>02</span>
+                Activity
             </a>
 
-            <a href="#" class="nav-item" data-target="recovery">
-                <span class="nav-number">03</span>
-                <span>RECOVERY</span>
+            <a href="#" class="nav-item">
+                <span>03</span>
+                Recovery
             </a>
 
-            <a href="#" class="nav-item" data-target="insights">
-                <span class="nav-number">04</span>
-                <span>INSIGHTS</span>
+            <a href="#" class="nav-item">
+                <span>04</span>
+                Insights
             </a>
 
         </nav>
 
         <div class="sidebar-bottom">
 
-            <div class="system-status">
+            <div class="status">
                 <span class="status-dot"></span>
                 SYSTEM ONLINE
             </div>
 
-            <div class="user-profile">
-                <div class="user-avatar">
-                    TD
-                </div>
+            <div class="user">
+                <div class="avatar">TD</div>
 
                 <div>
                     <strong>Tadzaki</strong>
@@ -78,27 +78,35 @@
 
 
     <!-- MAIN -->
-    <main class="main-content">
+
+    <main class="main">
 
         <!-- HEADER -->
+
         <header class="topbar">
 
-            <div class="greeting">
-                <span class="mono">MON · 16 NOV 2026</span>
+            <div>
+                <p class="eyebrow">PERFORMANCE / OVERVIEW</p>
+
+                <h1>
+                    Good morning,
+                    <em>Tadzaki.</em>
+                </h1>
             </div>
 
-            <div class="sync-status">
-                LAST SYNC <strong>2 MIN AGO</strong>
+            <div class="date">
+                <span>MONDAY</span>
+                <strong>16 NOV 2026</strong>
             </div>
 
         </header>
 
 
-        <!-- OVERVIEW -->
-        <section id="overview" class="overview-section">
+        <!-- CONTROLS -->
 
-            <!-- PERIOD -->
-            <div class="period-selector">
+        <section class="controls">
+
+            <div class="period-switch">
 
                 <button class="period active" data-period="7">
                     7D
@@ -114,277 +122,326 @@
 
             </div>
 
-
-            <!-- KPI CARDS -->
-            <div class="stats-grid">
-
-                <div class="stat-card">
-
-                    <div class="stat-label">
-                        DISTANCE
-                    </div>
-
-                    <div class="stat-value">
-                        <span id="distance">78.4</span>
-                        <small>KM</small>
-                    </div>
-
-                    <div class="stat-change">
-                        +12.8%
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-label">
-                        TRAINING
-                    </div>
-
-                    <div class="stat-value">
-                        <span id="training">4.8</span>
-                        <small>HRS</small>
-                    </div>
-
-                    <div class="stat-change">
-                        +8.4%
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-label">
-                        RECOVERY
-                    </div>
-
-                    <div class="stat-value">
-                        <span id="recovery">87</span>
-                        <small>%</small>
-                    </div>
-
-                    <div class="stat-change">
-                        +4.2%
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-label">
-                        SESSIONS
-                    </div>
-
-                    <div class="stat-value">
-                        <span id="sessions">6</span>
-                        <small>TOTAL</small>
-                    </div>
-
-                    <div class="stat-meta">
-                        THIS WEEK
-                    </div>
-
-                </div>
-
+            <div class="sync">
+                LAST SYNC
+                <strong>2 MIN AGO</strong>
             </div>
-
-
-            <!-- PERFORMANCE -->
-            <section class="performance-section">
-
-                <div class="section-header">
-
-                    <div>
-                        <div class="section-number">
-                            01 / PERFORMANCE
-                        </div>
-
-                        <h2>
-                            Weekly performance
-                        </h2>
-                    </div>
-
-                    <div class="chart-label">
-                        <span></span>
-                        DISTANCE
-                    </div>
-
-                </div>
-
-                <div class="chart-container">
-                    <canvas id="performanceChart"></canvas>
-                </div>
-
-            </section>
-
-
-            <!-- ACTIVITY + RECOVERY -->
-            <div class="lower-grid">
-
-                <!-- ACTIVITY -->
-                <section id="activity" class="panel activity-panel">
-
-                    <div class="section-number">
-                        02 / ACTIVITY
-                    </div>
-
-                    <h2>
-                        Movement
-                    </h2>
-
-
-                    <div class="activity-list">
-
-                        <div class="activity-item">
-
-                            <div class="activity-icon">
-                                ↗
-                            </div>
-
-                            <div class="activity-info">
-                                <strong>Running</strong>
-                                <span>5 sessions</span>
-                            </div>
-
-                            <div class="activity-value">
-                                42.8 km
-                            </div>
-
-                        </div>
-
-
-                        <div class="activity-item">
-
-                            <div class="activity-icon">
-                                +
-                            </div>
-
-                            <div class="activity-info">
-                                <strong>Strength</strong>
-                                <span>4 sessions</span>
-                            </div>
-
-                            <div class="activity-value">
-                                4.8 hrs
-                            </div>
-
-                        </div>
-
-
-                        <div class="activity-item">
-
-                            <div class="activity-icon">
-                                →
-                            </div>
-
-                            <div class="activity-info">
-                                <strong>Walking</strong>
-                                <span>8 sessions</span>
-                            </div>
-
-                            <div class="activity-value">
-                                18.2 km
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                <!-- RECOVERY -->
-                <section id="recovery" class="panel recovery-panel">
-
-                    <div class="section-number">
-                        03 / RECOVERY
-                    </div>
-
-                    <div class="recovery-heading">
-
-                        <h2>
-                            Readiness
-                        </h2>
-
-                        <div class="readiness-value">
-                            87%
-                        </div>
-
-                    </div>
-
-
-                    <div class="recovery-bar">
-                        <span></span>
-                    </div>
-
-
-                    <div class="recovery-stats">
-
-                        <div>
-                            <span>SLEEP</span>
-                            <strong>8h 12m</strong>
-                        </div>
-
-                        <div>
-                            <span>HRV</span>
-                            <strong>72 ms</strong>
-                        </div>
-
-                        <div>
-                            <span>RESTING HR</span>
-                            <strong>51 bpm</strong>
-                        </div>
-
-                    </div>
-
-                </section>
-
-            </div>
-
-
-            <!-- INSIGHTS -->
-            <section id="insights" class="insight-panel">
-
-                <div class="section-number">
-                    04 / SYSTEM INSIGHT
-                </div>
-
-                <div class="insight-content">
-
-                    <div class="insight-marker"></div>
-
-                    <div>
-                        <h2>
-                            Training load is trending upward.
-                        </h2>
-
-                        <p>
-                            Your recent activity suggests a consistent increase
-                            in training volume while recovery remains strong.
-                        </p>
-                    </div>
-
-                </div>
-
-            </section>
-
 
         </section>
 
 
-        <!-- FOOTER -->
-        <footer class="dashboard-footer">
-            <span>PULSE PERFORMANCE SYSTEM</span>
-            <span>V1.0 / 2026</span>
+        <!-- KPI CARDS -->
+
+        <section class="stats">
+
+            <article class="stat-card">
+
+                <span class="stat-label">
+                    DISTANCE
+                </span>
+
+                <strong id="distance">
+                    78.4
+                </strong>
+
+                <span class="stat-unit">
+                    KM
+                </span>
+
+                <span class="stat-change positive">
+                    +12.8%
+                </span>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <span class="stat-label">
+                    TRAINING
+                </span>
+
+                <strong id="training">
+                    4.8
+                </strong>
+
+                <span class="stat-unit">
+                    HRS
+                </span>
+
+                <span class="stat-change positive">
+                    +8.4%
+                </span>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <span class="stat-label">
+                    RECOVERY
+                </span>
+
+                <strong id="recovery">
+                    87
+                </strong>
+
+                <span class="stat-unit">
+                    %
+                </span>
+
+                <span class="stat-change positive">
+                    +4.2%
+                </span>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <span class="stat-label">
+                    SESSIONS
+                </span>
+
+                <strong id="sessions">
+                    6
+                </strong>
+
+                <span class="stat-unit">
+                    TOTAL
+                </span>
+
+                <span class="stat-change neutral">
+                    THIS WEEK
+                </span>
+
+            </article>
+
+        </section>
+
+
+        <!-- PERFORMANCE CHART -->
+
+        <section class="panel performance-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <span class="section-number">
+                        01 / PERFORMANCE
+                    </span>
+
+                    <h2>
+                        Weekly performance
+                    </h2>
+                </div>
+
+                <div class="chart-legend">
+                    <span>
+                        <i></i>
+                        DISTANCE
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="chart-container">
+                <canvas id="performanceChart"></canvas>
+            </div>
+
+        </section>
+
+
+        <!-- LOWER GRID -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- ACTIVITY -->
+
+            <div class="panel activity-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="section-number">
+                            02 / ACTIVITY
+                        </span>
+
+                        <h2>
+                            Movement
+                        </h2>
+                    </div>
+
+                </div>
+
+
+                <div class="activity-list">
+
+                    <div class="activity-row">
+
+                        <div class="activity-icon run">
+                            ↗
+                        </div>
+
+                        <div class="activity-name">
+                            <strong>Running</strong>
+                            <span>5 sessions</span>
+                        </div>
+
+                        <div class="activity-value">
+                            42.8 km
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity-row">
+
+                        <div class="activity-icon gym">
+                            +
+                        </div>
+
+                        <div class="activity-name">
+                            <strong>Strength</strong>
+                            <span>4 sessions</span>
+                        </div>
+
+                        <div class="activity-value">
+                            4.8 hrs
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity-row">
+
+                        <div class="activity-icon walk">
+                            →
+                        </div>
+
+                        <div class="activity-name">
+                            <strong>Walking</strong>
+                            <span>8 sessions</span>
+                        </div>
+
+                        <div class="activity-value">
+                            18.2 km
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECOVERY -->
+
+            <div class="panel recovery-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="section-number">
+                            03 / RECOVERY
+                        </span>
+
+                        <h2>
+                            Readiness
+                        </h2>
+                    </div>
+
+                    <span class="recovery-score">
+                        87%
+                    </span>
+
+                </div>
+
+
+                <div class="recovery-bar">
+
+                    <div class="recovery-fill"></div>
+
+                </div>
+
+
+                <div class="recovery-metrics">
+
+                    <div>
+                        <span>SLEEP</span>
+                        <strong>8h 12m</strong>
+                    </div>
+
+                    <div>
+                        <span>HRV</span>
+                        <strong>72 ms</strong>
+                    </div>
+
+                    <div>
+                        <span>RESTING HR</span>
+                        <strong>51 bpm</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INSIGHT -->
+
+        <section class="insight">
+
+            <div class="insight-mark">
+                +
+            </div>
+
+            <div>
+
+                <span class="section-number">
+                    04 / SYSTEM INSIGHT
+                </span>
+
+                <h2>
+                    Your performance is trending
+                    <em>up.</em>
+                </h2>
+
+                <p>
+                    Training volume increased by 12.8% this period
+                    while recovery remained stable.
+                </p>
+
+            </div>
+
+            <div class="insight-arrow">
+                →
+            </div>
+
+        </section>
+
+
+        <footer class="footer">
+
+            <span>
+                PULSE / PERFORMANCE ANALYTICS
+            </span>
+
+            <span>
+                SYSTEM v1.0
+            </span>
+
+            <span>
+                © 2026
+            </span>
+
         </footer>
 
     </main>
 
 </div>
-
 
 <script src="script.js"></script>
 
