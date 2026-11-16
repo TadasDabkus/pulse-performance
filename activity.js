@@ -1,154 +1,5 @@
 const chartCanvas = document.getElementById("activityChart");
 
-
-/* ================================
-   ACTIVITY DATA
-================================ */
-
-const activityData = {
-
-    day: {
-
-        range: "16 NOV 2026",
-
-        distance: "14.2",
-        training: "1.7",
-        sessions: "3",
-        pace: "5:43",
-
-        labels: [
-            "06:00",
-            "08:00",
-            "10:00",
-            "12:00",
-            "14:00",
-            "16:00",
-            "18:00",
-            "20:00"
-        ],
-
-        values: [
-            0,
-            8.4,
-            8.4,
-            8.4,
-            8.4,
-            8.4,
-            14.2,
-            14.2
-        ],
-
-        title: "Today's activity"
-
-    },
-
-
-    week: {
-
-        range: "10–16 NOV 2026",
-
-        distance: "78.4",
-        training: "4.8",
-        sessions: "6",
-        pace: "5:38",
-
-        labels: [
-            "MON",
-            "TUE",
-            "WED",
-            "THU",
-            "FRI",
-            "SAT",
-            "SUN"
-        ],
-
-        values: [
-            8.2,
-            11.4,
-            6.8,
-            13.2,
-            9.7,
-            15.1,
-            14.0
-        ],
-
-        title: "Weekly activity"
-
-    },
-
-
-    month: {
-
-        range: "NOVEMBER 2026",
-
-        distance: "261.8",
-        training: "18.6",
-        sessions: "21",
-        pace: "5:41",
-
-        labels: [
-            "W1",
-            "W2",
-            "W3",
-            "W4"
-        ],
-
-        values: [
-            52.4,
-            61.8,
-            68.2,
-            78.4
-        ],
-
-        title: "Monthly activity"
-
-    },
-
-
-    year: {
-
-        range: "2026",
-
-        distance: "684.9",
-        training: "52.4",
-        sessions: "58",
-        pace: "5:47",
-
-        labels: [
-            "JAN",
-            "FEB",
-            "MAR",
-            "APR",
-            "MAY",
-            "JUN",
-            "JUL",
-            "AUG",
-            "SEP",
-            "OCT",
-            "NOV"
-        ],
-
-        values: [
-            42,
-            51,
-            48,
-            57,
-            63,
-            59,
-            72,
-            198,
-            224,
-            261,
-            284
-        ],
-
-        title: "2026 activity"
-
-    }
-
-};
-
-
 let activityChart;
 
 
@@ -158,13 +9,11 @@ let activityChart;
 
 function createActivityChart(period = "day") {
 
-    const data = activityData[period];
-
+    const data = pulseData.activity[period];
 
     if (activityChart) {
         activityChart.destroy();
     }
-
 
     activityChart = new Chart(chartCanvas, {
 
@@ -175,9 +24,7 @@ function createActivityChart(period = "day") {
             labels: data.labels,
 
             datasets: [
-
                 {
-
                     label: "Distance",
 
                     data: data.values,
@@ -202,13 +49,10 @@ function createActivityChart(period = "day") {
                     fill: true,
 
                     tension: 0.35
-
                 }
-
             ]
 
         },
-
 
         options: {
 
@@ -217,20 +61,15 @@ function createActivityChart(period = "day") {
             maintainAspectRatio: false,
 
             interaction: {
-
                 intersect: false,
-
                 mode: "index"
-
             },
-
 
             plugins: {
 
                 legend: {
                     display: false
                 },
-
 
                 tooltip: {
 
@@ -248,7 +87,6 @@ function createActivityChart(period = "day") {
 
                     displayColors: false,
 
-
                     callbacks: {
 
                         label: function(context) {
@@ -263,7 +101,6 @@ function createActivityChart(period = "day") {
 
             },
 
-
             scales: {
 
                 x: {
@@ -271,7 +108,6 @@ function createActivityChart(period = "day") {
                     grid: {
                         display: false
                     },
-
 
                     ticks: {
 
@@ -289,18 +125,15 @@ function createActivityChart(period = "day") {
 
                     },
 
-
                     border: {
                         display: false
                     }
 
                 },
 
-
                 y: {
 
                     beginAtZero: true,
-
 
                     grid: {
 
@@ -308,7 +141,6 @@ function createActivityChart(period = "day") {
                             "rgba(255,255,255,0.05)"
 
                     },
-
 
                     ticks: {
 
@@ -322,7 +154,6 @@ function createActivityChart(period = "day") {
 
                         },
 
-
                         callback: function(value) {
 
                             return value + " km";
@@ -331,7 +162,6 @@ function createActivityChart(period = "day") {
 
                     },
 
-
                     border: {
                         display: false
                     }
@@ -339,7 +169,6 @@ function createActivityChart(period = "day") {
                 }
 
             },
-
 
             animation: {
 
@@ -352,17 +181,16 @@ function createActivityChart(period = "day") {
         }
 
     });
-
 }
 
 
 /* ================================
-   UPDATE STATS
+   UPDATE ACTIVITY
 ================================ */
 
 function updateActivity(period) {
 
-    const data = activityData[period];
+    const data = pulseData.activity[period];
 
 
     document.getElementById(
@@ -390,9 +218,22 @@ function updateActivity(period) {
     ).textContent = data.pace;
 
 
+    const titles = {
+
+        day: "Today's activity",
+
+        week: "Weekly activity",
+
+        month: "Monthly activity",
+
+        year: "2026 activity"
+
+    };
+
+
     document.getElementById(
         "activityChartTitle"
-    ).textContent = data.title;
+    ).textContent = titles[period];
 
 
     createActivityChart(period);
@@ -412,32 +253,25 @@ const periodButtons =
 
 periodButtons.forEach(button => {
 
-    button.addEventListener(
-        "click",
-        () => {
+    button.addEventListener("click", () => {
 
-            const period =
-                button.dataset.period;
+        const period =
+            button.dataset.period;
 
 
-            periodButtons.forEach(btn => {
+        periodButtons.forEach(btn => {
 
-                btn.classList.remove(
-                    "active"
-                );
+            btn.classList.remove("active");
 
-            });
+        });
 
 
-            button.classList.add(
-                "active"
-            );
+        button.classList.add("active");
 
 
-            updateActivity(period);
+        updateActivity(period);
 
-        }
-    );
+    });
 
 });
 
@@ -446,4 +280,4 @@ periodButtons.forEach(button => {
    INITIAL LOAD
 ================================ */
 
-createActivityChart("day");
+updateActivity("day");
