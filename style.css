@@ -756,47 +756,52 @@ a {
 }
 
 /* ================================
-   ACTIVITY PAGE
+   ACTIVITY PAGE POLISH
 ================================ */
 
-.periods {
-    display: flex;
-    gap: 6px;
-    margin-top: 24px;
-}
-
-.period {
+/* Activity period buttons */
+.activity-period {
     appearance: none;
-    border: 1px solid #303535;
-    background: #101212;
-    color: #858b88;
-    padding: 9px 14px;
+    border: 0;
+    border-right: 1px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    padding: 9px 17px;
     font-family: "Inter", sans-serif;
     font-size: 9px;
     font-weight: 800;
     letter-spacing: 0.08em;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: 0.2s ease;
 }
 
-.period:hover {
-    color: #f1f3f0;
-    border-color: #626866;
+.activity-period:last-child {
+    border-right: 0;
 }
 
-.period.active {
-    background: #c8ff00;
-    border-color: #c8ff00;
+.activity-period:hover {
+    color: var(--text);
+}
+
+.activity-period.active {
+    background: var(--lime);
     color: #090a0a;
 }
 
-/* Activity panels */
-.activity-panel {
-    padding: 20px;
+
+/* Activity lower panels */
+.dashboard-grid > .panel {
+    padding: 25px;
 }
 
-/* Summary / Status spacing */
-.activity-panel .summary,
-.activity-panel .status {
-    padding-left: 0;
+
+/* Summary metrics */
+.dashboard-grid .recovery-metrics {
+    margin-top: 32px;
+}
+
+
+/* Status insight */
+.dashboard-grid .insight {
+    margin-top: 12px;
 }
