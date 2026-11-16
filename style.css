@@ -1054,3 +1054,155 @@ a {
     }
 
 }
+/* ================================
+   INSIGHTS
+================================ */
+
+.insights-description {
+    margin-top: 12px;
+    max-width: 700px;
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.insights-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+}
+
+.insights-metrics > div {
+    border-right: 1px solid var(--line);
+    padding-left: 18px;
+}
+
+.insights-metrics > div:first-child {
+    padding-left: 0;
+}
+
+.insights-metrics > div:last-child {
+    border-right: 0;
+}
+
+.insights-metrics span {
+    display: block;
+    color: var(--muted);
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.insights-metrics strong {
+    display: block;
+    margin-top: 7px;
+    color: var(--lime);
+    font-size: 14px;
+}
+
+.insights-panel-title {
+    margin-top: 18px;
+    font-size: 19px;
+    letter-spacing: -0.03em;
+}
+
+.insights-panel-text {
+    margin-top: 10px;
+    max-width: 500px;
+    color: var(--muted);
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+.insights-status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    color: var(--lime);
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.insights-status .status-dot {
+    width: 5px;
+    height: 5px;
+}
+
+.performance-state {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.state-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    background: var(--lime);
+    color: #090a0a;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.performance-state span {
+    display: block;
+    color: var(--muted);
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.performance-state strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+.performance-state p {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 8px;
+}
+
+.state-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 25px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+}
+
+.state-metrics > div {
+    border-right: 1px solid var(--line);
+    padding-left: 14px;
+}
+
+.state-metrics > div:first-child {
+    padding-left: 0;
+}
+
+.state-metrics > div:last-child {
+    border-right: 0;
+}
+
+.state-metrics span {
+    display: block;
+    color: var(--muted);
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.state-metrics strong {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+}
