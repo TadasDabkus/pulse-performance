@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PULSE — Activity</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <span class="brand-mark">+</span>
+            <span>PULSE</span>
+        </div>
+
+
+        <nav class="navigation">
+
+            <a href="index.html" class="nav-item">
+                <span>01</span>
+                Overview
+            </a>
+
+            <a href="activity.html" class="nav-item active">
+                <span>02</span>
+                Activity
+            </a>
+
+            <a href="recovery.html" class="nav-item">
+                <span>03</span>
+                Recovery
+            </a>
+
+            <a href="insights.html" class="nav-item">
+                <span>04</span>
+                Insights
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="status">
+                <span class="status-dot"></span>
+                SYSTEM ONLINE
+            </div>
+
+
+            <div class="user">
+
+                <div class="avatar">
+                    TD
+                </div>
+
+                <div>
+                    <strong>Tadzaki</strong>
+                    <span>Performance</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="eyebrow">
+                    PERFORMANCE / ACTIVITY
+                </p>
+
+                <h1>
+                    Your
+                    <em>activity.</em>
+                </h1>
+
+            </div>
+
+
+            <div class="date">
+
+                <span>MONDAY</span>
+
+                <strong>
+                    16 NOV 2026
+                </strong>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- PERIOD CONTROLS -->
+
+        <section class="controls">
+
+            <div class="period-switch">
+
+                <button class="activity-period active" data-period="day">
+                    DAY
+                </button>
+
+                <button class="activity-period" data-period="week">
+                    WEEK
+                </button>
+
+                <button class="activity-period" data-period="month">
+                    MONTH
+                </button>
+
+                <button class="activity-period" data-period="year">
+                    YEAR
+                </button>
+
+            </div>
+
+
+            <div class="sync">
+
+                DATA RANGE
+
+                <strong id="activityRange">
+                    16 NOV 2026
+                </strong>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- KPI -->
+
+        <section class="stats">
+
+
+            <article class="stat-card">
+
+                <span class="stat-label">
+                    DISTANCE
+                </span>
+
+                <strong id="activityDistance">
+                    14.2
+                </strong>
+
+                <span class="stat-unit">
+                    KM
+                </span>
+
+                <span class="stat-change positive">
+                    +8.4%
+                </span>
+
+            </article>
+
+
+
+            <article class="stat-card">
+
+                <span class="stat-label">
+                    TRAINING
+                </span>
+
+                <strong id="activityTraining">
+                    1.7
+                </strong>
+
+                <span class="stat-unit">
+                    HRS
+                </span>
+
+                <span class="stat-change positive">
+                    +12.2%
+                </span>
+
+            </article>
+
+
+
+            <article class="stat-card">
+
+                <span class="stat-label">
+                    SESSIONS
+                </span>
+
+                <strong id="activitySessions">
+                    3
+                </strong>
+
+                <span class="stat-unit">
+                    TOTAL
+                </span>
+
+                <span class="stat-change neutral">
+                    TODAY
+                </span>
+
+            </article>
+
+
+
+            <article class="stat-card">
+
+                <span class="stat-label">
+                    AVG PACE
+                </span>
+
+                <strong id="activityPace">
+                    5:43
+                </strong>
+
+                <span class="stat-unit">
+                    / KM
+                </span>
+
+                <span class="stat-change positive">
+                    -4.1%
+                </span>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- ACTIVITY CHART -->
+
+        <section class="panel performance-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="section-number">
+                        01 / ACTIVITY LOAD
+                    </span>
+
+                    <h2 id="activityChartTitle">
+                        Today's activity
+                    </h2>
+
+                </div>
+
+
+                <div class="chart-legend">
+
+                    <span>
+                        <i></i>
+                        DISTANCE
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-container">
+
+                <canvas id="activityChart"></canvas>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ACTIVITY DETAILS -->
+
+        <section class="panel activity-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="section-number">
+                        02 / SESSIONS
+                    </span>
+
+                    <h2>
+                        Movement
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="activity-list">
+
+
+                <div class="activity-row">
+
+                    <div class="activity-icon run">
+                        ↗
+                    </div>
+
+
+                    <div class="activity-name">
+
+                        <strong>
+                            Running
+                        </strong>
+
+                        <span>
+                            08:12 · Outdoor
+                        </span>
+
+                    </div>
+
+
+                    <div class="activity-value">
+                        8.4 km
+                    </div>
+
+                </div>
+
+
+
+                <div class="activity-row">
+
+                    <div class="activity-icon gym">
+                        +
+                    </div>
+
+
+                    <div class="activity-name">
+
+                        <strong>
+                            Strength
+                        </strong>
+
+                        <span>
+                            17:30 · Upper body
+                        </span>
+
+                    </div>
+
+
+                    <div class="activity-value">
+                        52 min
+                    </div>
+
+                </div>
+
+
+
+                <div class="activity-row">
+
+                    <div class="activity-icon walk">
+                        →
+                    </div>
+
+
+                    <div class="activity-name">
+
+                        <strong>
+                            Walking
+                        </strong>
+
+                        <span>
+                            21:14 · Outdoor
+                        </span>
+
+                    </div>
+
+
+                    <div class="activity-value">
+                        5.8 km
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- WEEKLY SUMMARY -->
+
+        <section class="dashboard-grid">
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="section-number">
+                            03 / SUMMARY
+                        </span>
+
+                        <h2>
+                            Training volume
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="recovery-metrics">
+
+                    <div>
+
+                        <span>
+                            RUNNING
+                        </span>
+
+                        <strong>
+                            42.8 km
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            STRENGTH
+                        </span>
+
+                        <strong>
+                            4.8 hrs
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            WALKING
+                        </span>
+
+                        <strong>
+                            18.2 km
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="section-number">
+                            04 / STATUS
+                        </span>
+
+                        <h2>
+                            Training status
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="insight">
+
+                    <div class="insight-mark">
+                        +
+                    </div>
+
+
+                    <div>
+
+                        <span class="section-number">
+                            SYSTEM ANALYSIS
+                        </span>
+
+                        <h2>
+                            Training load is
+                            <em>stable.</em>
+                        </h2>
+
+                        <p>
+                            Your current activity volume is within
+                            the expected range for this period.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <span>
+                PULSE / ACTIVITY ANALYTICS
+            </span>
+
+            <span>
+                SYSTEM v1.0
+            </span>
+
+            <span>
+                © 2026
+            </span>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+<script src="activity.js"></script>
+
+</body>
+
+</html>
