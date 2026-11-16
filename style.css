@@ -805,3 +805,252 @@ a {
 .dashboard-grid .insight {
     margin-top: 12px;
 }
+
+/* ================================
+   INSIGHTS PAGE
+================================ */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.stats-grid .stat-card {
+    min-height: 130px;
+    padding: 22px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.stats-grid .stat-label {
+    color: var(--muted);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+}
+
+.stats-grid .stat-value {
+    color: var(--text);
+    font-size: 34px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+}
+
+.stats-grid .stat-value span {
+    font-size: 11px;
+    color: var(--muted);
+    margin-left: 3px;
+    letter-spacing: 0;
+}
+
+.stats-grid .stat-change {
+    color: var(--lime);
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+}
+
+.insight-panel {
+    margin-top: 12px;
+    padding: 28px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+}
+
+.insight-panel h2 {
+    margin-top: 18px;
+    font-size: 25px;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+
+.insight-panel > p {
+    max-width: 700px;
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+}
+
+.analysis-grid > div {
+    border-right: 1px solid var(--line);
+    padding-left: 18px;
+}
+
+.analysis-grid > div:first-child {
+    padding-left: 0;
+}
+
+.analysis-grid > div:last-child {
+    border-right: 0;
+}
+
+.analysis-grid span,
+.state-metrics span {
+    display: block;
+    color: var(--muted);
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.analysis-grid strong {
+    display: block;
+    margin-top: 8px;
+    color: var(--lime);
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.dashboard-grid .panel h2 {
+    margin-top: 18px;
+    font-size: 22px;
+    line-height: 1.1;
+}
+
+.dashboard-grid .panel > p {
+    margin-top: 10px;
+    max-width: 560px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.recommendation-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    color: var(--lime);
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.recommendation-status .status-dot {
+    width: 5px;
+    height: 5px;
+    background: var(--lime);
+    display: block;
+}
+
+.performance-state {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.state-mark {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--lime);
+    color: #090a0a;
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.performance-state span {
+    display: block;
+    color: var(--muted);
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.performance-state strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.performance-state p {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.state-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+}
+
+.state-metrics > div {
+    border-right: 1px solid var(--line);
+    padding-left: 14px;
+}
+
+.state-metrics > div:first-child {
+    padding-left: 0;
+}
+
+.state-metrics > div:last-child {
+    border-right: 0;
+}
+
+.state-metrics strong {
+    display: block;
+    margin-top: 7px;
+    font-size: 15px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .analysis-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .analysis-grid > div {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        padding: 0 0 14px 0;
+    }
+
+    .analysis-grid > div:last-child {
+        border-bottom: 0;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .insight-panel {
+        padding: 20px;
+    }
+
+}
